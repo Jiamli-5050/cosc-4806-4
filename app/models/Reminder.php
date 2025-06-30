@@ -1,6 +1,6 @@
 <?php
 
-class Reminders {
+class Reminder {
 
   public function __construct() {
 
@@ -8,7 +8,7 @@ class Reminders {
 
   public function get_all_reminders () {
     $db = db_connect ();
-    $statement = $db->prepare("select * from users;");
+    $statement = $db->prepare("select * from reminders;");
     $statement->execute ();
     $rows = $statement->fetch(PDO::FETCH_ASSOC);
     return $rows;
@@ -18,5 +18,5 @@ class Reminders {
     $db = db_connect ();
    // do update statement
   }
-
+}
   ?>
