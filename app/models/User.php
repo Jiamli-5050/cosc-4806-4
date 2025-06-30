@@ -83,6 +83,7 @@ class User {
     if ($insert->execute([$username, $hashed])) {
       $_SESSION['auth'] = 1;
       $_SESSION['username'] = ucfirst($username);
+      $_SESSION['userid'] = $rows['userid'];
       header("Location: /home");
       exit;
     } else {
