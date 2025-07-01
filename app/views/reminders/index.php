@@ -18,7 +18,10 @@ require_once 'app/views/templates/header.php' ?>
     <p>
       <?= htmlspecialchars($reminder['subject']) ?>
       <a href="/reminders/update?id=<?= $reminder['id'] ?>">update</a>
-      <a href="/reminders/delete?id=<?= $reminder['id'] ?>">delete</a>
+      <form method ="post" action="/reminders/delete" style="display: inline;">
+        <input type="hidden" name="id" value="<?= $reminder['id'] ?>">
+        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">delete</button>
+      </form>
     </p>
    <?php endforeach; ?>
 

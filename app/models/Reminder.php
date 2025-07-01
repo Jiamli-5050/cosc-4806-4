@@ -24,5 +24,11 @@ class Reminder {
     $db = db_connect ();
    // do update statement
   }
+
+  public function delete_reminder ($id) {
+    $db = db_connect ();
+    $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");
+    $statement->execute (['id' => $id]);
+  }
 }
   ?>
