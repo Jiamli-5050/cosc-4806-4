@@ -6,18 +6,18 @@ class Reminder {
 
   }
 
-  public function get_all_reminders ($user_id) {
+  public function get_all_reminders () {
     $db = db_connect ();
-    $statement = $db->prepare("select * from reminders WHERE user_id = :uid ORDER BY id DESC");
-    $statement->execute (['uid' => $user_id]);
+    $statement = $db->prepare("select * from reminders ORDER BY id DESC");
+    $statement->execute ();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
 
-  public function create_reminder ($subject, $user_id) {
+  public function create_reminder ($subject) {
     $db = db_connect ();
-    $statement = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (:subject, :user_id)");
-    $statement->execute (['subject' => $subject, 'user_id' => $user_id]);
+    $statement = $db->prepare("INSERT INTO reminders (subject) VALUES (:subject)");
+    $statement->execute (['subject' => $subject]);
   }
   
   public function update_reminder ($reminder_id) {
