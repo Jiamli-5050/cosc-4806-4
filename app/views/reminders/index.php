@@ -21,11 +21,12 @@ require_once 'app/views/templates/header.php' ?>
       </tr>
     </thead>
   <tbody>
-
+<!-- Loop through the reminders and display them in a table -->
   <?php foreach ($data['reminders'] as $reminder) : ?>
     <tr>
       <td><?= htmlspecialchars($reminder['subject']) ?></td>
       <td>
+        <!-- Update button -->
       <form method ='post' action="/reminders/update" class="mb-2 d-inline-block me-2">
         <input type="hidden" name="id" value="<?= $reminder['id'] ?>">
         <input type="text" 

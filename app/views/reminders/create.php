@@ -1,5 +1,6 @@
 <?php require_once 'app/views/templates/header.php'; ?>
 
+
 <div class="container mt-4"> 
   <h3> Create a reminder</h3>
   <form method="post" action="/reminders/store">

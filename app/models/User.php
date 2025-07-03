@@ -41,6 +41,7 @@ class User {
       if ($rows && password_verify($password, $rows['password'])) {
           $_SESSION['auth'] = 1;
           $_SESSION['username'] = ucfirst($username);
+        
           $log->logAttempt($username, 'good');
         header("Location: /home");
         exit;
