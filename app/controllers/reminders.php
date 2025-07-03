@@ -34,4 +34,16 @@ class Reminders extends Controller {
        header('Location: /reminders');
        exit;
    }
+    public function update() {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'], $_POST['subject'])) {
+        $id = intval($_POST['id']);
+        $subject = trim($_POST['subject']);
+        if (!empty($subject)) {
+          $reminder = $this->model('Reminder');
+          $reminder->update_reminder($id, $subject);
+        }
+      }
+      header('Location: /reminders');
+      exit;
+    }
 }

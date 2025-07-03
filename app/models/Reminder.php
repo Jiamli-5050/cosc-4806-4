@@ -20,9 +20,10 @@ class Reminder {
     $statement->execute (['subject' => $subject]);
   }
   
-  public function update_reminder ($reminder_id) {
+  public function update_reminder ($id, $subject) {
     $db = db_connect ();
-   // do update statement
+    $statement = $db->prepare("UPDATE reminders SET subject = :subject WHERE id = :id");
+    $statement->execute (['subject' => $subject, 'id' => $id]);
   }
 
   public function delete_reminder ($id) {
@@ -30,5 +31,6 @@ class Reminder {
     $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");
     $statement->execute (['id' => $id]);
   }
+
 }
   ?>

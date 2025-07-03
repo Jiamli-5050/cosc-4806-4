@@ -26,7 +26,17 @@ require_once 'app/views/templates/header.php' ?>
     <tr>
       <td><?= htmlspecialchars($reminder['subject']) ?></td>
       <td>
-      <a href="/reminders/update?id=<?= $reminder['id'] ?>" class="btn btn-sm btn-warning">Update</a>
+      <form method ='post' action="/reminders/update" class="mb-2 d-inline-block me-2">
+        <input type="hidden" name="id" value="<?= $reminder['id'] ?>">
+        <input type="text" 
+        name="subject" 
+        placeholder="Type here to update"
+        class="form-control form-control-sm d-inline-block" 
+        style="width: auto;" required>
+        <button type="submit" class="btn btn-sm btn-warning">Update</button>
+      </form>
+
+        <!-- Delete button -->
       <form method ="post" action="/reminders/delete" style="display: inline;">
         <input type="hidden" name="id" value="<?= $reminder['id'] ?>">
         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
