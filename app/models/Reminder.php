@@ -9,7 +9,7 @@ class Reminder {
   
   public function get_all_reminders () {
     $db = db_connect ();
-    $statement = $db->prepare("select * from reminders ORDER BY id DESC");
+    $statement = $db->prepare("select * from reminders WHERE deleted_at IS NULL ORDER BY id DESC");
     $statement->execute ();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
