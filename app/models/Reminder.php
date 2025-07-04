@@ -29,7 +29,7 @@ class Reminder {
 
   public function delete_reminder ($id) {
     $db = db_connect ();
-    $statement = $db->prepare("DELETE FROM reminders WHERE id = :id");
+    $statement = $db->prepare("UPDATE reminders set deleted_at = NOW() where id=:id");
     $statement->execute (['id' => $id]);
   }
 
